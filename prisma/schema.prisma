@@ -1,0 +1,82 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model feriados1 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados256 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados314 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados454 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados555 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados689 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados747 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados846 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
+
+model feriados988 {
+  data      DateTime? @db.Date
+  nome      String?   @db.VarChar(45)
+  tipo      String?   @db.VarChar(30)
+  descricao String?   @db.VarChar(500)
+  id        Int       @id @default(autoincrement())
+}
