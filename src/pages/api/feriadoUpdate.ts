@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 export default async function handleFeriadoUpdate(req:NextApiRequest,res:NextApiResponse){
    if(req.method === 'PUT'){
       try{
-         const feriado = await prisma.feriados1.update({
+         const feriado = await prisma.feriados314.update({
             where:{
                id: parseInt(req.query.id.toString()) 
             },

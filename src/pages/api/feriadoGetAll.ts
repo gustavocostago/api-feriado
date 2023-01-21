@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 export default async function handleFeriadoGetAll(req:NextApiRequest,res:NextApiResponse){
     if(req.method === 'GET'){
         try{
-            const feriado = await prisma.feriados1.findMany();
+            const feriado = await prisma.feriados314.findMany();
             res.status(200).json(feriado)
             await prisma.$disconnect()
         }

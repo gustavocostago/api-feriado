@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 export default async function handleFeriadoDelete(req:NextApiRequest,res:NextApiResponse){
    if(req.method === 'DELETE'){
       try{
-         const feriado = await prisma.feriados1.delete({
+         const feriado = await prisma.feriados314.delete({
             where:{
                id: parseInt(req.query.id.toString()) 
             }

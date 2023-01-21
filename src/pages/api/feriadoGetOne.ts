@@ -10,7 +10,7 @@ export default async function handleFeriadoGetOne(req:NextApiRequest,res:NextApi
     else{
         if(req.method === 'GET'){
             try{
-                const feriado = await prisma.feriados1.findMany({
+                const feriado = await prisma.feriados314.findMany({
                     where:{
                         data:new Date(req.query.date.toString())
                     }

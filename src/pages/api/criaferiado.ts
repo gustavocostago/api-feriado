@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 export default async function handleCriaFeriado(req:NextApiRequest,res:NextApiResponse){
    if(req.method === 'POST'){
       try{
-         const feriado = await prisma.feriados1.create({
+         const feriado = await prisma.feriados314.create({
             data:{
                nome: req.body.nome,
                descricao: req.body.descricao,

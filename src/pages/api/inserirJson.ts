@@ -12,7 +12,7 @@ export default async function handleInserirJson(req:NextApiRequest, res:NextApiR
     if(req.method === 'POST'){
         try{
             while(i<dados.length){
-                const feriado = await prisma.feriados1.create({
+                const feriado = await prisma.feriados314.create({
                     data:{
                        nome: dados[i].nome,
                        descricao: dados[i].descricao,
