@@ -8,7 +8,7 @@ export default async function handleFeriadoGetOne(req:NextApiRequest,res:NextApi
         return res.status(404).send('Not Found.')
         
     if(verificaData(req.query.date.toString()) === false)
-        return res.status(400).send("Data invalida, use o formato feriadoGetOne?date=YYYY-MM-DD")
+        return res.status(201).send("Data invalida, use o formato feriadoGetOne?date=YYYY-MM-DD")
         
     try{
         const feriado = await prisma.feriados314.findMany({

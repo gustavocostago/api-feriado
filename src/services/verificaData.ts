@@ -1,3 +1,6 @@
+//fonte do codigo: https://www.scaler.com/topics/date-validation-in-javascript/
+//codigo auxiliar para validacao de data
+
 export default function verificaData(date: String){
         // Date format: YYYY-MM-DD
         var datePattern = /^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
