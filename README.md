@@ -24,7 +24,7 @@ Recebe como parâmetro um id e atualiza um feriado na tabela de acordo com o id 
 ## Services:
 
 * ### verificaData
- Verifica se a data informada é válida no formato DD-MM-YYYY
+ Verifica se a data informada é válida no formato DD/MM/YYYY
 * ### convertData
 Converte o formato da data para o padrão DateTime
 * ### prismaClient
