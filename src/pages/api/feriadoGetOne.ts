@@ -1,34 +1,30 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
-import verificaData from "../../services/verificaData";
+import { NextApiRequest, NextApiResponse } from "next"
 
-const prisma = new PrismaClient()
+import prisma from '../../services/prismaClient'
+import verificaData from "../../services/verificaData"
 
 export default async function handleFeriadoGetOne(req:NextApiRequest,res:NextApiResponse){
+    if(req.method !== 'GET')
+        return res.status(404).send('Not Found.')
+        
     if(verificaData(req.query.date.toString()) === false)
-        res.status(400).send("Data invalida, use o formato feriadoGetOne?date=YYYY-MM-DD")
-    else{
-        if(req.method === 'GET'){
-            try{
-                const feriado = await prisma.feriados314.findMany({
-                    where:{
-                        data:new Date(req.query.date.toString())
-                    }
-                });
-                if(feriado.length === 0)
-                    res.status(202).send('Essa data não é um feriado')
-                else
-                    res.status(200).json(feriado)
-    
-                await prisma.$disconnect()
+        return res.status(400).send("Data invalida, use o formato feriadoGetOne?date=YYYY-MM-DD")
+        
+    try{
+        const feriado = await prisma.feriados314.findMany({
+            where:{
+                data:new Date(req.query.date.toString())
             }
-            catch(e){
-                res.status(500).send(e)
-                await prisma.$disconnect()
-            }
-        }
-        else{
-            res.status(404).send('Not Found.')
-        }
-    }   
+        });
+        if(feriado.length === 0)
+            res.status(202).send('Essa data não é um feriado')
+        else
+            res.status(200).json(feriado)
+    }
+    catch(error){
+        res.status(500).send(error.message)
+    }
+    finally{        
+        await prisma.$disconnect()
+    }
 }

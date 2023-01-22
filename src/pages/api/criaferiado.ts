@@ -1,28 +1,27 @@
-import { PrismaClient } from '@prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import convertData from '../../services/convertData'
 
-const prisma = new PrismaClient()
+import convertData from '../../services/convertData'
+import prisma from '../../services/prismaClient'
 
 export default async function handleCriaFeriado(req:NextApiRequest,res:NextApiResponse){
-   if(req.method === 'POST'){
-      try{
-         const feriado = await prisma.feriados314.create({
-            data:{
-               nome: req.body.nome,
-               descricao: req.body.descricao,
-               tipo: req.body.tipo,
-               data: convertData(req.body.data)
-            }
-         })
-         res.status(201).json(feriado)
-         await prisma.$disconnect()
-      }
-      catch(e){
-         res.status(500).send(e);
-         await prisma.$disconnect()
-      }  
+   if(req.method !== 'POST')
+      return res.status(404).send('Not found.')
+      
+   try{
+      const feriado = await prisma.feriados314.create({
+         data:{
+            nome: req.body.nome,
+            descricao: req.body.descricao,
+            tipo: req.body.tipo,
+            data: convertData(req.body.data)
+         }
+      })
+      res.status(201).json(feriado)
    }
-   else
-      res.status(404).send('Not found.');
+   catch(error){
+      res.status(500).send(error.message)
+   }  
+   finally{
+      await prisma.$disconnect()
+   }
 }
