@@ -26,6 +26,6 @@ Recebe como parâmetro um id e atualiza um feriado na tabela de acordo com o id 
 * ### verificaData
  Verifica se a data informada é válida no formato DD-MM-YYYY
 * ### convertData
-Convert o formato da data para o padrão DateTime
+Converte o formato da data para o padrão DateTime
 * ### prismaClient
 Instância o prismaCliente para ser utilizado em todas as rotas
