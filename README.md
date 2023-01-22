@@ -13,7 +13,10 @@ Deleta todos os dados da tabela. Retorna status 200 para sucesso e 500 apontando
 * ### (GET) /api/feriadoGetAll
 Retorna status 200 para sucesso e todos os feriados cadastrados no banco, em caso de erro é retornado o status 500
 * ### (GET) /api/feriadoGetOne?date=YYYY-MM-DD
-Recebe como parametro date=YYYY-MM-DD e busca um feriado (caso haja) na data informada. Caso a data seja inválida retorna o status 201 e a instrução para a busca, se a data informada não for um feriado é retornado o status(202) e uma mensagem dizendo "essa data não é um feriado". Se a data informada for válida e for um feriado é retornado o status(200) e o feriado desejado
+1. Recebe como parametro date=YYYY-MM-DD e busca um feriado (caso haja) na data informada. 
+2. Caso a data seja inválida retorna o status 201 e a instrução para a busca. 
+3. Se a data informada não for um feriado é retornado o status(202) e uma mensagem dizendo "essa data não é um feriado". 
+4. Se a data informada for válida e for um feriado é retornado o status(200) e o feriado desejado
 * ### (PUT) /api/feriadoUpdate?id=
 Recebe como parâmetro um id e atualiza um feriado na tabela de acordo com o id informado. Retorna 200 para sucesso, e 500 em caso de erro
 
