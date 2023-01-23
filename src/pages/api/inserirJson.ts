@@ -4,21 +4,12 @@ import { NextApiResponse } from "next"
 import prisma from '../../services/prismaClient'
 import convertData from "../../services/convertData";
 import dados from "../../../feriados_nacionais_2023.json"
-import existeFeriado from "../../services/existeFeriado";
-var index = 0
 
 export default async function handleInserirJson(req:NextApiRequest, res:NextApiResponse) {
     //verifica o metodo da requisicao
     if(req.method !== 'POST')
         return res.status(404).send('Not found.')
-    //verifica se ha duplicidade
-    while(index < dados.length){
-        const existeData = dados[index].data
-        const existeferiado = await existeFeriado(existeData)
-        if(existeferiado === 200)
-            return res.status(500).send('Feriado já existente')
-        index++
-    }  
+
     //grava os registros
     try{
         await prisma.feriados314.createMany({

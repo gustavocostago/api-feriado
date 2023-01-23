@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import convertData from '../../services/convertData'
-import existeFeriado from '../../services/existeFeriado'
 import prisma from '../../services/prismaClient'
 import verificaData from '../../services/verificaData'
 
@@ -13,11 +12,6 @@ export default async function handleCriaFeriado(req:NextApiRequest,res:NextApiRe
    //verifica se a data eh valida
    if(verificaData(req.body.data.split('/').reverse().join('-')) === false)
       return res.status(201).send("Data invalida")
-   
-   //verifica se ha duplicidade
-   const existeferiado = await existeFeriado(req.body.data)
-   if(existeferiado === 200)
-      return res.status(500).send('Feriado já existente')
 
    //cria feriado
    try{
